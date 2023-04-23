@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,0" />
+    <link rel="shortcut icon" href="/static/images/ticket.png" type="image/x-icon">
+    <title>Добавление</title>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/static/newpassword.js"></script>
+    
+    {% include 'header.html' %}
+    <div id="outer">
+        <div id="inner">
+            <div class="login-card-container">
+                <div class="login-card" >
+                    
+                    <div class="login-card-header">
+                        <h1>Добавление</h1>
+                    </div>
+                    <form class="login-card-form" method="post" enctype="multipart/form-data">
+
+                            <input type="text" placeholder="Название Мероприятия" name="name">
+                            <input type="number" min="0" step="0.01" placeholder="Цена за простой билет" name="price_simple">
+                            <input type="number" min="0" step="0.01" placeholder="Цена за билет с едой" name="price_dish">
+                            <input type="number" min="0" step="0.01" placeholder="Цена за билет с мерчем" name="price_merch">
+                            <input type="number" min="1" step="1" placeholder="Количество простых билетов" name="count_simple">
+                            <input type="number" min="1" step="1" placeholder="Количество билетов с едой" name="count_dish">
+                            <input type="number" min="1" step="1" placeholder="Количество билетов с мерчем" name="count_merch">
+                            <input type="file" name="file[]" accept=".png, .jpg, .bmp, .jpeg">
+                            <textarea style="height: 120px;" placeholder="Описание" class="text" name="description"></textarea>
+                            <input type="date" placeholder="Дата" name="date">
+                        <button type="submit">Добавить</button>
+                    </form>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

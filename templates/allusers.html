@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,0" />
+    <link rel="shortcut icon" href="/static/images/ticket.png" type="image/x-icon">
+    <title>Все пользователи</title>
+</head>
+
+<body>
+    <script src="/static/redirects.js"></script>
+    {% include 'header.html' %}
+    <div id="outer">
+        <div id="inner" style="color: white; width: 80%; text-align: center;">
+            <h1>Все пользователи</h1>
+            {% for i in users %}
+                <div class="user_in_admin">
+                    <h4 class="element">{{ i.login }}</h4>
+                    <h4 class="element">{{ i.email }}</h4>
+                    
+                    {% if not i.login in admins %}
+                    <button class="gimme-admin" onclick="red('/admin/gimme_admin?id={{i.id}}')">Выдать админку</button>
+                    <button class="steal-account" onclick="red('/admin/del_account?id={{i.id}}')">Удалить аккаунт</button>
+                    {% elif i.login == 'admin' %}
+                    <h3>Главный Админ</h3>
+                    {% else %}
+                    <button class="steal-admin" onclick="red('/admin/steal_admin?id={{i.id}}')">Удалить из админов</button>
+                    <h3>Аккаунт Админа</h3>
+                    {% endif %}
+                </div><br>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+
+</html>

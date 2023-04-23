@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,0" />
+    <link rel="shortcut icon" href="/static/images/ticket.png" type="image/x-icon">
+    <title>Участники</title>
+</head>
+
+<body>
+    <script src="/static/redirects.js"></script>
+    {% include 'header.html' %}
+    <div id="outer">
+        <div id="inner" style="color: white; width: 80%; text-align: center;">
+            <h1>Все Участники Мероприятия "{{ concert_name }}" {{ date }}</h1><br><br>
+            <div style="border: 5px solid white; width: 80%;margin-left: auto; margin-right: auto; border-radius: 20px;">
+            {% for i in range(nicknames|length) %}
+             <h1>{{ i+1 }}. {{ nicknames[i][0] }} | {{ nicknames[i][1] }}</h1><br><br>
+            {% endfor %}
+        </div>
+    </div>
+
+</body>
+
+</html>

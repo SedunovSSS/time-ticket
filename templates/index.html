@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,0" />
+    <link rel="shortcut icon" href="/static/images/ticket.png" type="image/x-icon">
+    <title>Главная</title>
+</head>
+
+<body>
+    <script src="/static/redirects.js"></script>
+    {% include 'header.html' %}
+    <div id="outer">
+        <div id="inner" style="color: white; width: 90%; text-align: center">
+            <h1><img src="/static/images/ticket.png" class="icon">  Time Ticket от команды "Гуманитарии"</h1>
+            <h1>Здравствуйте, {{ name }}</h1>
+            <div class="search-form">
+                <form method="get">
+           <input type="text" placeholder="Поиск" value="{{ search }}" class="search" name="search"><button class="search-btn"><img src="/static/images/search.png" style="width: 10px; height: 10px;"></button>
+       </form>
+        </div>
+        <br><br><br><br>
+        {% set l = tickets|length %}
+        {% for i in range(l) %}
+        <div style="display: inline; ">
+        <div class="ticket">
+            <img src="{{ tickets[i].image_path }}" class="img-ticket">
+            <div style="padding-top: 30px;">
+            <label>{{tickets[i].concert_name}}</label><br><br>
+            <label>Обычный</label><br><br>
+            <label>{{tickets[i].tickets_count_simple}} билетов</label></div><br><br>
+            <div class="ticket-buttons">
+            <button class="button-ticket" onclick="red('/buy?id={{tickets[i].id}}&type=simple')">{{tickets[i].price_simple  }} RUB</button><button class="button-ticket" onclick="red('/add2cart?id={{tickets[i].id}}&type=simple')">В корзину</button><button class="button-ticket" onclick="red('/view?name={{tickets[i].concert_name}}&date={{tickets[i].date}}&type=simple')">Подробнее</button>
+        </div>
+            </div>
+
+
+        <div style="display: inline; ">
+            <div class="ticket" style="border: 2px solid silver;">
+                <img src="{{ tickets[i].image_path }}" class="img-ticket">
+                <div style="padding-top: 30px;">
+                <label>{{tickets[i].concert_name}}</label><br><br>
+                <label>Еда</label><br><br>
+                <label>{{tickets[i].tickets_count_dish}} билетов</label></div><br><br>
+                <div class="ticket-buttons">
+                <button class="button-ticket" onclick="red('/buy?id={{tickets[i].id}}&type=dish')">{{tickets[i].price_dish  }} RUB</button><button class="button-ticket" onclick="red('/add2cart?id={{tickets[i].id}}&type=dish')">В корзину</button><button class="button-ticket" onclick="red('/view?name={{tickets[i].concert_name}}&date={{tickets[i].date}}&type=dish')">Подробнее</button>
+            </div>
+                </div>
+
+            <div style="display: inline; ">
+                <div class="ticket" style="border: 2px solid gold; padding-bottom: 20px;">
+                    <img src="{{ tickets[i].image_path }}" class="img-ticket">
+                    <div style="padding-top: 30px;">
+                    <label>{{tickets[i].concert_name}}</label><br><br>
+                    <label>Мерч</label><br><br>
+                        <label>{{tickets[i].tickets_count_merch}} билетов</label></div><br><br>
+                    <div class="ticket-buttons">
+                    <button class="button-ticket" onclick="red('/buy?id={{tickets[i].id}}&type=merch')">{{tickets[i].price_merch  }} RUB</button><button class="button-ticket" onclick="red('/add2cart?id={{tickets[i].id}}&type=merch')">В корзину</button><button class="button-ticket" onclick="red('/view?name={{tickets[i].concert_name}}&date={{tickets[i].date}}&type=merch')">Подробнее</button>
+                </div>
+                    </div>
+                </div>
+
+                <br><br>
+            {% endfor %}
+        </div>
+    </div>
+
+        </div>
+    </div>
+
+</body>
+
+</html>

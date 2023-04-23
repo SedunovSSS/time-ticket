@@ -1,0 +1,37 @@
+.qrcode {
+    width: 200px;
+    height: 180px;
+    padding: 25px 0;
+    margin-left: 2%;
+    padding-top: 4%;
+    line-height: 1.25;
+    transition: 0.5s;
+    position: relative;
+    display: flex;
+    margin-right: 20px;
+}
+
+.Ico {
+    margin: 17px 0px 15px 15px;
+
+    
+    box-shadow: 0.1px 0.1px 15px 5px #000;
+    font-family: "Roboto", sans-serif;
+    font-weight: bold;
+      width: 80px;
+      height: 80px;
+    background-color: white;
+    border-radius: 30%;
+}
+
+
+.block {
+  display:table;
+}
+
+.block img,
+.block span {
+  margin-left: 5px;
+  display: table-cell;
+  vertical-align:middle;
+}

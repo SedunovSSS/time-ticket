@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@48,600,0,0" />
+    <link rel="shortcut icon" href="/static/images/ticket.png" type="image/x-icon">
+    <title>Админка</title>
+</head>
+
+<body>
+    <script src="/static/redirects.js"></script>
+    {% include 'header.html' %}
+    <div id="outer">
+        <div id="inner" style="color: white; width: 80%; text-align: center;">
+            <h1>Админ</h1><br>
+            <a href="/admin/add_ticket" class="link_header">Добавить Билет</a><a href="/admin/all_users" class="link_header">Все пользователи</a><a href="/admin/add_promo" class="link_header">Добавить промокод</a><a href="/admin/all_promo" class="link_header">Все промокоды</a><br><br><br>
+            {% set l = tickets|length %}
+        {% for i in range(l) %}
+        <div style="display: inline;">
+            <div class="ticket-admin">
+                <img src="{{ tickets[i].image_path }}" class="img-ticket">
+                <div style="padding-top: 64px;">
+                <label>{{tickets[i].concert_name}}</label><br><br>
+                <label>{{tickets[i].date}}</label></div><br><br>
+                <div class="ticket-buttons">
+                    <button class="button-ticket" style="width: 128px;" onclick="red('/admin/edit_ticket?id={{tickets[i].id}}')">Изменить</button><button class="button-ticket" style="width: 128px;" onclick="red('/admin/del_ticket?id={{tickets[i].id}}')">Удалить</button>
+            </div>
+                </div>
+            </div>
+    
+                    <br><br>
+            {% endfor %}
+            </div>
+        </div>
+        
+    </div>
+</body>
+
+</html>

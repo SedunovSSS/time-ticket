@@ -1,0 +1,16 @@
+.footer-distributed{
+  background-color: black;
+  color: white;
+  border-radius: 20px;
+  width: 80%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 500px;
+  font-weight: bold;
+}
+a{
+  text-decoration: none;
+  color: white;
+  margin-right: 40px;
+}

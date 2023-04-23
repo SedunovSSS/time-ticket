@@ -1,0 +1,73 @@
+<link rel="stylesheet" href="/static/css/fastauth.css"/>
+<link rel="stylesheet" href="/static/css/list.css">
+<header class="header">
+  <span  style="padding-bottom: 20px;color: white;font-size: 20px;
+  margin-right: 20px; font-weight: bold;"><img src="/static/images/ticket.png" class="icon">  Time Ticket</span>
+    <a href="/" class="link_header">На главную</a>
+    
+    <button onclick="document.getElementById('id01').style.display='block'" class="btn-head">Быстрый вход</button>
+
+<div id="id01" class="modal">
+  
+  <form class="modal-content animate" action="/login" method="post">
+    <div class="imgcontainer">
+      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+    </div>
+
+    <div class="container">
+      <label for="uname"><b>Логин</b></label>
+      <input type="text" placeholder="Введите Логин" name="login" required class="input"><br>
+
+      <label for="psw"><b>Пароль</b></label>
+      <input type="password" placeholder="Введите Пароль" name="password" required class="input">
+        
+      <button type="submit" class="btn-fast-auth">Войти</button>
+  
+    </div>
+
+  </form>
+</div>
+
+<script>
+// Get the modal
+var modal = document.getElementById('id01');
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
+</script>
+<div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Вход/Регистрация</button>
+  <div id="myDropdown" class="dropdown-content">
+    <a href="/register" class="link_header">Регистрация</a>
+    <a href="/login" class="link_header">Войти</a>
+    <a href="/logout" class="link_header">Выйти</a>
+  </div>
+</div>
+
+<script>
+/* Когда пользователь нажимает на кнопку, переключаться раскрывает содержимое */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Закрыть раскрывающийся список, если пользователь щелкнет за его пределами.
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+<a href="/mytickets" class="link_header">Мои билеты<sup> {{a}}</sup></a>
+<a href="/admin" class="link_header">Админ-панель</a>
+</header><br>
